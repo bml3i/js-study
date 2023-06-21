@@ -1,0 +1,71 @@
+
+<html>
+    <head>
+        <title>01 - 闭包基础</title>
+        <!-- https://www.bilibili.com/video/BV1iE411q7Qd/?spm_id_from=333.999.0.0&vd_source=7cccc6d50960f0563559cadc4aab971d -->
+    </head>
+    <body>
+
+      <body>
+ 
+        <script>
+            function books() {
+                var book = "01 - 书包里的书"; 
+            }
+
+            // book is undefined here
+            //console.log(book);
+
+
+            function a() {
+                b(); 
+                function b(){
+                    c();
+                    function c() {
+                        console.log("02 - 我在里面");
+                    }
+                }
+            }
+
+            a();
+
+            function mybooks() {
+                var mybook = "03 - 书包里的书"; 
+
+                return function() {
+                    console.log(mybook);
+                }
+            }
+
+            var mybag = mybooks(); 
+            mybag();
+
+
+            // test A
+            for (var i = 0; i < 5; i++) {
+                setTimeout(function() {
+                    console.log("A: ", i++);
+                }, 3000)
+            }
+
+            console.log("A(outer): ", i);
+
+            console.log("-----------------");
+
+            // test B
+            for (var j = 0; j < 5; j++) {
+                (function(x) {
+                    setTimeout(function() {
+                        console.log("B: ", x++);
+                    }, 3000)
+                })(j);
+            }
+
+            console.log("B(outer): ", i);
+
+            console.log("-----------------");
+
+
+        </script>
+    </body>
+</html>
