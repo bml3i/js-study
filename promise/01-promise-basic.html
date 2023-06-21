@@ -1,0 +1,37 @@
+<html>
+    <head>
+      <!-- URL: https://www.bilibili.com/video/BV1QV411a7Hu/?spm_id_from=333.788&vd_source=7cccc6d50960f0563559cadc4aab971d -->
+      <title>promise - basic</title>
+
+    </head>
+    <body>
+
+        <script>
+
+            const imgAddress = 'https://leobi-1258137619.cos.ap-shanghai.myqcloud.com/img/zhe/zhe-header-large.jpg';
+
+            const imgPromise = ( url ) => {
+                return new Promise ( (resolve, reject) => {
+                    const img = new Image();
+                    img.src = url; 
+                    img.onload = () => {
+                        resolve (img); 
+                    };
+
+                    img.onerror = () => {
+                        reject( new Error('image error!'));
+                    }
+                });
+            };
+
+            imgPromise( imgAddress )
+                .then( img => {
+                    document.body.appendChild( img ); 
+                })
+                .catch( err => {
+                    document.body.innerHTML = err; 
+                })
+
+        </script>
+    </body>
+</html>

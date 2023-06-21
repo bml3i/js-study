@@ -1,0 +1,30 @@
+<html>
+    <head>
+      <!-- URL: https://www.bilibili.com/video/BV1434y1o74Q/?spm_id_from=333.788&vd_source=7cccc6d50960f0563559cadc4aab971d -->
+      <title>fetch - fetch-post</title>
+    </head>
+    <body>
+        <button>输入狗狗信息</button>
+
+        <input type="text" placeholder="输入狗狗姓名">
+
+        <script>
+
+            const button = document.querySelector('button');
+            const input = document.querySelector('input');
+
+            button.addEventListener('click', () => {
+              fetch('https://jsonplaceholder.typicode.com/users', {
+                method: 'POST',
+                body: JSON.stringify({name: input.value}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }, 
+              })
+                .then( response => response.json())
+                .then( data => console.log(JSON.stringify(data)) );
+            });
+
+        </script>
+    </body>
+</html>

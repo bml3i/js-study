@@ -1,0 +1,79 @@
+<html>
+    <head>
+    </head>
+    <body>
+
+      <body>
+
+        <div>对象解构</div>
+
+        <button onclick="location.href='/'" type="button">回到首页</button>
+
+        <script>
+
+          const obj = {
+            id: 1, 
+            name_: 'Leo',
+            age: 25, 
+            gender: '男',
+            email: 'leo.bi@163.com'
+          }
+
+          // bad solution
+          const id = obj.id; 
+          const name_ = obj.name_; 
+          const age = obj.age; 
+          const gender = obj.gender; 
+          const email = obj.email; 
+          console.log('[BAD SOLUTION]: ', id, name_, age, gender, email);
+
+          // 解构到新变量名
+          const { name_: myName, email: myEmail} = obj; 
+          console.log('[GOOD SOLUTION]: ', myName, myEmail);
+
+          // 调用数组元素来获取相应的属性名 (得到的属性名要加中括号)
+          const keyArr = ['name_', 'email'];
+          const { [keyArr[0]]: myName2, [keyArr[1]]: myEmail2} = obj; 
+          console.log(myName2, myEmail2);
+
+          // 属性不存在使用默认值
+          const { major: myMajor = '计算机'} = obj; 
+          console.log('myMajor: ', myMajor);
+
+          // 删除 一些属性
+          const { id: myId2, age: myAge2, ...restObj} = obj; 
+          console.log('restObj: ', restObj);
+
+          // 嵌套解构赋值
+          const nestedObj = {
+            id: 2, 
+            name: 'Leo',
+            skills: {
+              cook: {
+                main: '番茄炒蛋'
+              }, 
+              language: {
+                frontEnd: 'JavaScript',
+                backEnd: 'JAVA'
+              }
+            }
+          }
+
+          let { skills: { language: {backEnd: backendLanguageSkill}}} = nestedObj; 
+          console.log("backendLanguageSkill: ", backendLanguageSkill);
+
+          // 对象数组的解构赋值 
+          const objArray = [
+            { name: '鸡先生', age: 4}, 
+            { name: '猪先生', age: 5}, 
+            { name: '狗先生', age: 2}
+          ];
+
+          objArray.forEach(({name, age}, index) => {
+            console.log(`name: ${name}, age: ${age}`);
+          });
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <head>
+    </head>
+    <body>
+
+      <body>
+
+        <div>其他场景的使用</div>
+
+        <button onclick="location.href='/'" type="button">回到首页</button>
+
+        <script>
+
+          // 函数返回数组，然后解构赋值
+          function getAPI(data) {
+            return [data.name, data.age];
+          }
+
+          const [myName, myAge] = getAPI({name: 'Alala', age: 18});
+          console.log(myName, myAge);
+
+          // 获取Map里的values
+          let map = new Map();
+          map.set('name1', '鸡先生');
+          map.set('name2', '鸭先生');
+          map.set('name3', '鹅先生');
+
+          for(let [, value] of map) {
+            console.log("PRINT: ", value);
+          }
+
+          // node.js 模块引入函数
+          // const { createServer } = require('http')
+          
+        </script>
+    </body>
+</html>

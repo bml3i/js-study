@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>async - 02-await-bad</title>
+    </head>
+    <body>
+
+      <body>
+
+        <script>
+            const url = 'https://jsonplaceholder.typicode.com/users';
+
+            let bb = async () => {
+
+              console.time('bb_time');
+
+              let response1 = await fetch(`${url}/1/`);
+              let json1 = await response1.json();
+              let name1 = await json1.name; 
+
+              let response2 = await fetch(`${url}/2/`);
+              let json2 = await response2.json();
+              let name2 = await json2.name; 
+
+              let response3 = await fetch(`${url}/3/`);
+              let json3 = await response3.json();
+              let name3 = await json3.name; 
+
+              let response4 = await fetch(`${url}/4/`);
+              let json4 = await response4.json();
+              let name4 = await json4.name; 
+
+              let response5 = await fetch(`${url}/5/`);
+              let json5 = await response5.json();
+              let name5 = await json5.name; 
+
+
+              console.log('name 1: ' + name1);
+              console.log('name 2: ' + name2);
+              console.log('name 3: ' + name3);
+              console.log('name 4: ' + name4);
+              console.log('name 5: ' + name5);
+
+              console.timeEnd("bb_time");
+              console.log('---------------------');
+            }
+
+            console.log('---------------------');
+
+            bb();
+
+        </script>
+    </body>
+</html>

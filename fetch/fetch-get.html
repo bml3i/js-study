@@ -1,0 +1,31 @@
+<html>
+    <head>
+      <!-- URL: https://www.bilibili.com/video/BV1434y1o74Q/?spm_id_from=333.788&vd_source=7cccc6d50960f0563559cadc4aab971d -->
+      <title>fetch - fetch-get</title>
+
+    </head>
+    <body>
+        <button>点击获取狗狗图片</button>
+
+        <img>
+
+        <script>
+
+            const button = document.querySelector('button');
+            const img = document.querySelector('img');
+
+            button.addEventListener('click', () => {
+              fetch('https://dog.ceo/api/breeds/image/random')
+                .then( response => {
+                  if (response.ok) {
+                    return response.json(); 
+                  } else {
+                    return new Error('没交电费');
+                  }
+                })
+                .then( data => img.src = data.message );
+            });
+
+        </script>
+    </body>
+</html>

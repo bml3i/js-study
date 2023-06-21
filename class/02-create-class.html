@@ -1,0 +1,132 @@
+<html>
+    <head>
+        <!-- https://www.bilibili.com/video/BV1g84y1c7cD/?spm_id_from=333.999.0.0&vd_source=7cccc6d50960f0563559cadc4aab971d -->
+      <title>Class - different ways to create a class</title>
+      <link type="text/css" rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <script>
+
+            // 1 - create a class from Object
+            let meal01 = new Object();
+            meal01.meat = ['鱼', '肉', '虾'];
+            meal01.vegetable = ['冬瓜', '西葫芦'];
+            meal01.ingredient = ['味精', '胡椒粉'];
+
+            meal01.effect = function() {
+                console.log(this.ingredient[0] + ' 有助于美容养颜');
+            }
+
+            console.log(meal01);
+            meal01.effect();
+
+
+            // 2 - A Simple Way
+            let meal02 = {
+                meat: ['鱼', '肉', '虾'],
+                vegetable: ['冬瓜', '西葫芦'],
+                ingredient: ['味精', '胡椒粉'],
+                effect() {
+                    console.log(this.ingredient[1] + ' 有助于抵御寒冷');
+                }
+            }
+
+            console.log(meal02);
+            meal02.effect();
+
+            // 3 - using Object.create()
+            let meal10086 = Object.create(meal02);
+            meal10086.vegetable.push('光亮花');
+            console.log(meal10086.vegetable);
+            // note that the original object was also modified
+            console.log(meal02.vegetable);
+
+
+            // 4 - Factory Method
+            function createMeal(meat, vegetable, ingredient) {
+                let obj = new Object();
+                obj.meat = meat; 
+                obj.vegetable = vegetable; 
+                obj.ingredient = ingredient; 
+
+                obj.effect = function() {
+                    console.log(this.ingredient[0] + ' 有助于美容养颜');
+                }
+
+                return obj; 
+            }
+
+            let meat1 = ['鱼', '肉', '虾'];
+            let meat2 = ['牛排', '猪头肉', '三文鱼'];
+
+            let vegetable1 = ['冬瓜', '西葫芦'];
+            let vegetable2 = ['白菜', '青椒'];
+
+            let ingredient1 = ['味精', '胡椒粉'];
+            let ingredient2 = ['花椒', '八角'];
+
+            let meal001 = createMeal(meat1, vegetable1, ingredient1);
+            let meal002 = createMeal(meat2, vegetable2, ingredient2);
+
+            meal001.effect();
+            meal002.effect();
+
+
+            // 3 - Normal Way to use this
+            function Meal(meat, vegetable, ingredient) {
+                this.meat = meat; 
+                this.vegetable = vegetable; 
+                this.ingredient = ingredient; 
+
+                this.effect = function() {
+                    console.log(this.ingredient[0] + ' 有助于美容养颜');
+                }
+            }
+
+            let meat3 = ['鱼', '肉', '虾'];
+            let meat4 = ['牛排', '猪头肉', '三文鱼'];
+
+            let vegetable3 = ['冬瓜', '西葫芦'];
+            let vegetable4 = ['白菜', '青椒'];
+
+            let ingredient3 = ['味精', '胡椒粉'];
+            let ingredient4 = ['花椒', '八角'];
+
+            let meal003 = createMeal(meat3, vegetable3, ingredient3);
+            let meal004 = createMeal(meat4, vegetable4, ingredient4);
+
+            meal001.effect();
+            meal002.effect();
+
+            // 4 - ES6 Class (suggest to use)
+            class MyMeal {
+			    constructor(meat, vegetable, ingredient) {
+	                this.meat = meat; 
+	                this.vegetable = vegetable; 
+	                this.ingredient = ingredient;
+					
+	                this.effect = function() {
+	                    console.log(this.ingredient[0] + ' 有助于美容养颜');
+	                }
+				}
+            }
+
+            let meat5 = ['鱼', '肉', '虾'];
+            let meat6 = ['牛排', '猪头肉', '三文鱼'];
+
+            let vegetable5 = ['冬瓜', '西葫芦'];
+            let vegetable6 = ['白菜', '青椒'];
+
+            let ingredient5 = ['味精', '胡椒粉'];
+            let ingredient6 = ['花椒', '八角'];
+
+            let meal005 = new MyMeal(meat5, vegetable5, ingredient5);
+            let meal006 = new MyMeal(meat6, vegetable6, ingredient6);
+
+            meal005.effect();
+            meal006.effect();
+
+        </script>
+    </body>
+</html>

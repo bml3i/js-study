@@ -1,0 +1,32 @@
+<html>
+    <head>
+    </head>
+    <body>
+        
+      <div>async await 是基于Promise的语法糖，永远返回Promise</div>
+      <div>await 必须配合 async 一起使用，不能单独使用 </div>
+
+      <body>
+        <ul>
+            <li><a href="01-fetch.html" >01. Fetch</a></li>
+            <li><a href="02-await-bad.html" >02. await (bad code)</a></li>
+            <li><a href="03-await-good.html" >03. await (good codes)</a></li>
+        </ul>
+ 
+        <script>
+
+          async function bb() {
+            console.log('1');
+            let two = await Promise.resolve('2');
+            console.log(two);
+            console.log('3');
+            return Promise.resolve("This is BB"); 
+          }
+
+          bb().then( value => {
+            console.log( value );
+          });
+
+        </script>
+    </body>
+</html>

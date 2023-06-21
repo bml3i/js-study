@@ -1,0 +1,72 @@
+<html>
+    <head>
+    </head>
+    <body>
+
+      <body>
+
+        <div>数组解构例子</div>
+
+        <button onclick="location.href='/'" type="button">回到首页</button>
+
+        <script>
+
+          // 交换变量
+          let a = 'b';
+          let b = 'a';
+          [a, b] = [b, a];
+          console.log(a, b);
+
+          // 多个变量值的交换
+          let num1 = 30; 
+          let num2 = 10; 
+          let num3 = 40; 
+          let num4 = 20; 
+
+          [num1, num2, num3, num4] = [num2, num4, num1, num3];
+          console.log(`1st: ${num1}`, `2nd: ${num2}`, `3rd: ${num3}`, `4th: ${num4}`)
+
+          // ---------------
+
+          const arr = ['蛋同学', '鸡同学', '鸭同学', '驴同学', '马同学', '鹅同学'];
+
+          const nnum1 = arr[0];
+          const nnum2 = arr[1];
+          const nnum3 = arr[2];
+          console.log('NOT GOOD SOLUTION (前三名): ', nnum1, nnum2, nnum3);
+
+          [n1, n2, n3] = arr; 
+          console.log('GOOD SOLUTION (前三名): ', n1, n2, n3);
+
+          // 按位置赋值
+          [, , n3, , n5] = arr; 
+          console.log('GOOD SOLUTION (第3, 5名): ', n3, n5);
+
+          // 默认值
+          [, , n3, , n5, , n7 = '小鹿同学'] = arr; 
+          console.log('GOOD SOLUTION (第3, 5, 7名): ', n3, n5, n7);
+
+          // 在花括号里，以属性的形式指定元素的序号
+          const { 2: bn3, 4: bn5} = arr; 
+          console.log('GOOD SOLUTION (第3, 5名): ', bn3, bn5)
+
+          // 数组为空的话设置一个默认值
+          const [notExist = '数组为空'] = arr; 
+          console.log(notExist);
+
+          // 将剩余元素保存起来
+          const [cn1, cn2, cn3, ...restcn] = arr; 
+          console.log('前三名是: ', cn1, cn2, cn3, '; 不及格的是: ', restcn);
+
+          // 拷贝数组的方法
+          const [...copyArr] = arr; 
+          console.log('copyArr: ', copyArr);
+
+          // 嵌套数组结构
+          const nestedArray = ['蛋同学', '鸡同学', ['鸭同学', '驴同学'], ['马同学', '鹅同学', '考拉同学'], '塞尔达同学'];
+          const [nn1, , [, nn2], [, , nn3]] = nestedArray; 
+          console.log(nn1, nn2, nn3);
+
+        </script>
+    </body>
+</html>

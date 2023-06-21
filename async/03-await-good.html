@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>async - 03-await-good</title>
+    </head>
+    <body>
+
+      <body>
+
+        <script>
+            const url = 'https://jsonplaceholder.typicode.com/users';
+
+            let bb = async () => {
+
+              try {
+                console.time('bb_time');
+
+                let responses = await Promise.all(
+                  [fetch(`${url}/1/`), fetch(`${url}/2/`), fetch(`${url}/3/`), fetch(`${url}/4/`), fetch(`${url}/5/`)]
+                );
+
+                let jsons = responses.map( response => response.json() );
+                let values = await Promise.all(jsons);
+
+                values.map(value => {
+                  console.log( value.name );
+                });
+
+                console.timeEnd("bb_time");
+                console.log('---------------------');
+              } catch (error) {
+                console.timeEnd("bb_time");
+                console.log(error);
+                console.log('---------------------');
+              }
+
+            }
+
+            console.log('---------------------');
+
+            bb();
+
+        </script>
+    </body>
+</html>
