@@ -1,0 +1,54 @@
+
+<html>
+    <head>
+        <title>01 - 拷贝基础</title>
+    </head>
+    <body>
+
+      <body>
+        <script>
+
+            // example 1
+            let video = 100; 
+
+            let videoCopy = video; 
+            console.log('videoCopy 01: ', videoCopy); //100
+
+            videoCopy = 10000; 
+            console.log('videoCopy 02: ', videoCopy); //10000
+
+            // example 2 (浅拷贝)
+            const video2 = {like: 100}; 
+            const videoForward = video2; 
+            console.log('videoForward 01: ', videoForward.like); //100
+
+            videoForward.like = 10000; 
+            console.log('videoForward 02: ', videoForward.like); //10000
+            console.log('video2: ', video2.like); //10000
+
+            // example 3 (数组的拷贝)
+            const list = ['河南', '加油'];
+
+            const listCopy = [].concat(list);
+            // const listCopy = list.slice(); // optional: use slice
+            // const listCopy = Array.from(list); // optional: use Array.from()
+            // const listCopy = [...list]; // optional: use [... ] 展开运算符 - 浅拷贝
+            // const listCopy = JSON.parse(JSON.stringify(list)); // optional: JSON.stringify & JSON.parse 深拷贝
+
+            listCopy.push('中国', '加油');
+
+            console.log('list: ', list);
+            console.log('listCopy: ', listCopy);
+
+            // example 3 通用深拷贝方法 (Array / Object)
+            const list2 = ['河南', '加油'];
+            const listCopy2 = JSON.parse(JSON.stringify(list2));
+
+            listCopy2.push('中国', '加油');
+
+            console.log('list2: ', list2);
+            console.log('listCopy2: ', listCopy2);
+
+        </script>
+    </body>
+</html>
